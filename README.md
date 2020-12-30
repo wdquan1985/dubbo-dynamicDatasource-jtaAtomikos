@@ -1,23 +1,23 @@
 # dubbo-dynamicDatasource-jtaAtomikos
 This is a simple demo for springboot, dubbo and JTA atomikos.
-##1.Install zookeeper as the registration center for dubbo.
+## 1.Install zookeeper as the registration center for dubbo.
 You can download one from zookeeper official website.
 **Start one locally, it's running at *127.0.0.1:2181*. **
 
-##2.Compile this project.
+## 2.Compile this project.
 mvn clean package -Dmaven.test.skip=true
 
-##3.Import this maven project to eclipse.
+## 3.Import this maven project to eclipse.
 There are three modules in this project.
 + dubbo-example-common - define the common api
 + dubbo-example-provider - implement the common api and serve as the dubbo service provider.
 + dubbo-example-consumer - consume the dubbo service.  
 Has configured zookeeper address by setting the property *dubbo.registry.address* in application.yml of both provider and consumer, please make sure *dubbo.registry.address* matches the real zookeeper address.
 
-##4.Initialize the database
+## 4.Initialize the database
 Create two mysql databases multi_datasource_test1(master) and multi_datasource_test2(slave), then execute the sql file tables-master.sql for multi_datasource_test1, and tables-slave.sql for multi_datasource_test2.
 
-##4.API
+## 5.API
 Set the confumer access port as **9092**  
 The following api is used to test **distributed transaction**
 + http://localhost:9092/user/listalldata - Get all the datas from the test_user table of both the master and slave databases.
@@ -30,7 +30,7 @@ The following api is used to test the dubbo function.
 + http://localhost:9092/dubbotest/helloinfo - Used to test the dubbo functions, such as timeout and retries combination test, load balance test and so on.
 **timeout and retries combination test**
 ```
-@Service(version = "${helloService.version}", retries=5,timeout=1000)
+@Service(version = "${helloService.version}", retries=5, timeout=1000) //define the timeout 1000ms
 public class HelloServiceImpl implements HelloService {
 
     private static final AtomicLong counter = new AtomicLong();
@@ -40,7 +40,7 @@ public class HelloServiceImpl implements HelloService {
     public Hello hello(String name) {
     	logger.info("invoke the dubbo provider 1");
     	try {
-			Thread.sleep(2000);
+			Thread.sleep(2000); //sleep 2000ms, it will cause timeout exception.
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
