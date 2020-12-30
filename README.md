@@ -25,7 +25,7 @@ Set the confumer access port as **9092**
 + http://localhost:9092/user/insertTwoUsers?rollback=false - Insert data to the test_user table of both the master and slave databse, also it can test the **distributed transaction** function for mutli datasource.
 + http://localhost:9092/user/insertTwoUsers?rollback=true - Insert data to the test_user table of both the master and slave databse, it will raise an exception to call a rollback, also it can test the **distributed transaction** rollback function for mutli datasource. getmasteruser/{id}  
 
-(2).The following api is used to test the dubbo function.
+(2).The following api is used to test the **dubbo** function.
 + http://localhost:9092/dubbotest/helloinfo - Used to test the dubbo functions, such as timeout and retries combination test, load balance test and so on.
 **timeout and retries combination test**
 ```
@@ -54,7 +54,7 @@ logger.info("invoke the dubbo provider 1"), then start one new provider instance
 logger.info("invoke the dubbo provider 2"), then start one new provider instance.
 logger.info("invoke the dubbo provider 3"), then start one new provider instance.
 
-(3).The following two api is used to test dynamic datasource switching.
+(3).The following two api is used to test **dynamic datasource switching**.
 + http://localhost:9092/user/getmasteruser/{id} - Get one entry from the test_user table.  
 + http://localhost:9092/user/getslaveuser/{id} - Get one entry from the test_user table.
 
