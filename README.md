@@ -1,8 +1,7 @@
 # dubbo-dynamicDatasource-jtaAtomikos
 This is a simple demo for springboot, dubbo and JTA atomikos.
 ## 1.Install zookeeper as the registration center for dubbo.
-You can download one from zookeeper official website.
-**Start one locally, it's running at *127.0.0.1:2181*. **
+You can download one from zookeeper official website. Start one locally, it's running at *127.0.0.1:2181*.
 
 ## 2.Compile this project.
 mvn clean package -Dmaven.test.skip=true
