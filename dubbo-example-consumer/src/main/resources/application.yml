@@ -1,0 +1,12 @@
+server:
+  port: 9092
+spring:
+  application:
+    name: dubbo-example-consumer
+
+dubbo:
+  registry:
+      address: zookeeper://127.0.0.1:2181
+
+helloService:
+  version: 0.0.1

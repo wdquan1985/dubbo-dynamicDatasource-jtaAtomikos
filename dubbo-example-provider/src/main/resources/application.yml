@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: dubbo-example-provider
+  jta:
+    transaction-manager-id:myTxMgrId
+
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20882
+  scan:
+    basePackages: yiyi.example.dubbo.dynamicdatasource.service
+
+helloService:
+  version: 0.0.1
