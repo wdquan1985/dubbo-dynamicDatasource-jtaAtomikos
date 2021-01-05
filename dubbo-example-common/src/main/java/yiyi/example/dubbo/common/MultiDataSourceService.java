@@ -67,4 +67,10 @@ public interface MultiDataSourceService {
      * @return
      */
     public TestUser getSlaveUserById(String id);
+    
+    //主数据库中插入User信息
+    public void insertMasterUser(String name);
+    
+    //从数据库中插入User信息
+    public void insertSlaveUser(String name);
 }

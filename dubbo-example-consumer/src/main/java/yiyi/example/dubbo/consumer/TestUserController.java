@@ -36,6 +36,16 @@ public class TestUserController {
     }
     
     /**
+     * 向多个数据源中插入user信息。
+     * @return
+     */
+    @GetMapping("/insertUserInfoToMultiDatasource")
+    public void insertUserInfoToMultiDatasource(@RequestParam(value="username", required=true) String username) {
+    	multiDataSourceService.insertMasterUser(username);
+    	multiDataSourceService.insertSlaveUser(username);
+    }
+    
+    /**
      * 向主、从数据库中两个不同的表中(User和Product表)插入数据
      */
     @GetMapping("/insertTwoTables")
@@ -61,7 +71,7 @@ public class TestUserController {
     }
     
     /**
-     * 向主、从数据库中两个不同的表中(User和Product表)插入数据
+     * 从数据库中查询User信息
      */
     @GetMapping("/getslaveuser/{id}")
     public Object getSlaveUserById(@PathVariable(value = "id") String id) {

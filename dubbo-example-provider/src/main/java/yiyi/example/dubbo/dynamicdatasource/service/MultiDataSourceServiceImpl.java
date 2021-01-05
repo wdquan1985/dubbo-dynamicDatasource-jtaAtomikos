@@ -165,4 +165,32 @@ public class MultiDataSourceServiceImpl implements MultiDataSourceService{
           return null;
       }
    }
+    
+    //主数据库中插入User信息
+    @Override
+    @DS(value = DataSourceConstants.DS_KEY_MASTER)
+    @Transactional
+    public void insertMasterUser(String name) {
+      TestUser testUser = new TestUser();
+      testUser.setName(name);
+      testUser.setPhone("13674890382");
+      testUser.setRecordVersion(110L);
+      testUser.setEmail("hellworld@163.com");
+      testUser.setTitle("transcation_test");
+      testUserMapper.insert(testUser);
+   }
+
+    //从数据库中插入User信息
+    @Override
+    @DS(value = DataSourceConstants.DS_KEY_SLAVE)
+    @Transactional
+    public void insertSlaveUser(String name) {
+        TestUser testUser = new TestUser();
+        testUser.setName(name);
+        testUser.setPhone("13674890382");
+        testUser.setRecordVersion(110L);
+        testUser.setEmail("hellworld@163.com");
+        testUser.setTitle("transcation_test");
+        testUserMapper.insert(testUser);
+   }
 }
