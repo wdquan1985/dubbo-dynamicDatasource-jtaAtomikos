@@ -55,6 +55,7 @@ logger.info("invoke the dubbo provider 2"), then start one new provider instance
 logger.info("invoke the dubbo provider 3"), then start one new provider instance.
 
 (3).The following two api is used to test **dynamic datasource switching**.
++ http://localhost:9092/user/insertUserInfoToMultiDatasource?username= - Insert user info to master and slave datasource. 
 + http://localhost:9092/user/getmasteruser/{id} - Get one entry from the test_user table.  
 + http://localhost:9092/user/getslaveuser/{id} - Get one entry from the test_user table.
 
