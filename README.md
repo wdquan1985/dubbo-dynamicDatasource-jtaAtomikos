@@ -15,6 +15,7 @@ Has configured zookeeper address by setting the property *dubbo.registry.address
 
 ## 4.Initialize the database
 Create two mysql databases multi_datasource_test1(master) and multi_datasource_test2(slave), then execute the sql file tables-master.sql for multi_datasource_test1, and tables-slave.sql for multi_datasource_test2.
+We use mybatis-plus as the data persistence layer framework, user can change the primary key generation policy, for example, @TableId(type=IdType.AUTO), @TableId(value = "id", type=IdType.ID_WORKER) and so on, if you want to test different policy, please do the "TRUNCATE TABLE 'table name'" operation before your change.
 
 ## 5.API
 Set the confumer access port as **9092**  
