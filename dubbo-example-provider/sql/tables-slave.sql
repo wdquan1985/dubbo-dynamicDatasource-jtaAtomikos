@@ -31,7 +31,7 @@ CREATE TABLE `test_product` (
 	`create_time` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
 	`update_time` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
-) COLLATE='utf8_general_ci' ENGINE=InnoDB
+) COLLATE='utf8_general_ci' ENGINE=InnoDB;
 
 /*Data for the table `test_user` */
 
