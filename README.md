@@ -1,7 +1,7 @@
 # dubbo-dynamicDatasource-jtaAtomikos
 This is a simple demo for springboot, dubbo and JTA atomikos. Please refer to https://blog.csdn.net/wdquan19851029/article/details/111990912 for application implementation process. 
-Mysql: 8.0.27 
-Java: 1.8.0_291
+Mysql: 8.0.27  
+Java: 1.8.0_291  
 ## 1.Install zookeeper as the registration center for dubbo.
 You can download one from zookeeper official website. Start one locally, it's running at *127.0.0.1:2181*.
 
