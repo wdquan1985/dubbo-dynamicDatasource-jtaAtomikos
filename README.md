@@ -23,9 +23,9 @@ We use mybatis-plus as the data persistence layer framework, **user can change t
 Set the confumer access port as **9092**  
 (1).The following api is used to test **distributed transaction**
 + http://localhost:9092/user/listalldata - Get all the datas from the test_user table of both the master and slave databases.
-+ http://localhost:9092/user/insertTwoTables?rollback=false - Insert data to the test_product table of the master databse, and the test_user table of the slave database, it can test the **distributed transaction** function for mutli datasource.
++ http://localhost:9092/user/insertTwoTables?rollback=false - Insert data to the test_product table of the master databse, and the test_user table of the slave database, it can test the **database switchover** function for mutli datasource.
 + http://localhost:9092/user/insertTwoTables?rollback=true - Insert data to the test_product table of the master databse, and the test_user table of the slave database, but it will raise an exception to call a rollback, it can test the **distributed transaction** rollback function for mutli datasource.
-+ http://localhost:9092/user/insertTwoUsers?rollback=false - Insert data to the test_user table of both the master and slave databse, also it can test the **distributed transaction** function for mutli datasource.
++ http://localhost:9092/user/insertTwoUsers?rollback=false - Insert data to the test_user table of both the master and slave databse, also it can test the **database switchover** function for mutli datasource.
 + http://localhost:9092/user/insertTwoUsers?rollback=true - Insert data to the test_user table of both the master and slave databse, it will raise an exception to call a rollback, also it can test the **distributed transaction** rollback function for mutli datasource. getmasteruser/{id}  
 
 (2).The following api is used to test the **dubbo** function.
