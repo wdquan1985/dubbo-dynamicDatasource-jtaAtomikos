@@ -67,7 +67,7 @@ public class MultiDataSourceServiceImpl implements MultiDataSourceService{
      * @param throwException
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class) //如果不加rollbackFor的配置，那么只在runtimeException的情况下才会回滚
     public void insertTwoUsers(boolean throwException){
         //往从数据库中插入数据， 这种情况下无法通过在方法上加注解 @DS来切换数据源，所以直接切换。
         DynamicDataSourceContextHolder.removeContextKey();
@@ -109,7 +109,7 @@ public class MultiDataSourceServiceImpl implements MultiDataSourceService{
      * @param throwException
      */
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class) //如果不加rollbackFor的配置，那么只在runtimeException的情况下才会回滚
     public void insertTwoTables(boolean throwException){
     	//往主数据库中插入数据，这种情况下无法通过在方法上加注解 @DS来切换数据源，所以直接切换。
     	DynamicDataSourceContextHolder.setContextKey(DataSourceConstants.DS_KEY_MASTER);
@@ -169,7 +169,7 @@ public class MultiDataSourceServiceImpl implements MultiDataSourceService{
     //主数据库中插入User信息
     @Override
     @DS(value = DataSourceConstants.DS_KEY_MASTER)
-    @Transactional
+    @Transactional(rollbackFor = Exception.class) //如果不加rollbackFor的配置，那么只在runtimeException的情况下才会回滚
     public void insertMasterUser(String name) {
       TestUser testUser = new TestUser();
       testUser.setName(name);
@@ -183,7 +183,7 @@ public class MultiDataSourceServiceImpl implements MultiDataSourceService{
     //从数据库中插入User信息
     @Override
     @DS(value = DataSourceConstants.DS_KEY_SLAVE)
-    @Transactional
+    @Transactional(rollbackFor = Exception.class) ////如果不加rollbackFor的配置，那么只在runtimeException的情况下才会回滚
     public void insertSlaveUser(String name) {
         TestUser testUser = new TestUser();
         testUser.setName(name);
